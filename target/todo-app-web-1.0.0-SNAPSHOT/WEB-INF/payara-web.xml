@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<payara-web-app error-url="">
- 	<!-- delegate is false because we don't want to mix own depedencies with application server -->
-    <class-loader delegate="false"/>
-    <parameter-encoding default-charset="UTF-8"/>
-</payara-web-app>
