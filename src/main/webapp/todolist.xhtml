@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="template/todolist-template.xhtml">
+
+	<ui:define name="content">
+		<h:form id="createTaskForm">
+			<h:panelGrid columns="2" id="taskListGrid" columnClasses="task-list-grid-columns">
+				<h:panelGroup id="createNewTaskField">
+					<h2>Lisää tehtävä</h2>
+					<h:panelGrid columns="2">
+						<h:outputText value="Syötä kuvaus" />
+						<h:inputText id="newTaskDescription"
+							value="#{toDoListController.newTask.description}" maxlength="50"
+							required="true" requiredMessage="Kuvaus on pakollinen" />
+					</h:panelGrid>
+					<h:commandButton class="button" id="sendTaskFormButton"
+						value="Lisää" action="#{toDoListController.addTask}" />
+					<h:message id="sendTaskFormButtonMessage" for="newTaskDescription" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<!-- task table -->
+					<h2>Tehtävälista</h2>
+					<h:dataTable id="taskListTable" class="table"
+						value="#{toDoListController.tasks}" rows="20" var="task"
+						>
+						<h:column>
+							<f:facet name="header">Kuvaus</f:facet>
+							<h:outputText value="#{task.description}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Status</f:facet>
+							<h:outputText value="#{task.status.status}" />
+						</h:column>
+						<h:column>
+							<h:commandLink rendered="#{task.status == 'ONGOING'}"
+								action="#{toDoListController.finishTask(task)}"
+								value="Merkitse valmiiksi" update="taskListTable"
+								immediate="true" />
+						</h:column>
+						<h:column>
+							<h:commandLink action="#{toDoListController.deleteTask(task)}"
+								value="Poista" update="taskListTable" immediate="true" />
+						</h:column>
+					</h:dataTable>
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

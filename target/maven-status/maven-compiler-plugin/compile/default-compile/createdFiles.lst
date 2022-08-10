@@ -1,0 +1,9 @@
+fi\joonas\rekrytehtava\todoapp\dao\task\TaskDAOUtil.class
+fi\joonas\rekrytehtava\todoapp\dao\task\TaskDAO.class
+fi\joonas\rekrytehtava\todoapp\controller\ToDoListController.class
+fi\joonas\rekrytehtava\todoapp\service\TaskServiceImpl.class
+fi\joonas\rekrytehtava\todoapp\dao\DAO.class
+fi\joonas\rekrytehtava\todoapp\dao\task\TaskDAOImpl.class
+fi\joonas\rekrytehtava\todoapp\entity\Task.class
+fi\joonas\rekrytehtava\todoapp\model\TaskStatus.class
+fi\joonas\rekrytehtava\todoapp\service\TaskService.class
